@@ -1,4 +1,65 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071a2b"><title>Kattamaram II — Cardápio</title><link rel="stylesheet" href="style.css"></head><body>
-<header class="hero"><div class="top"><span id="menuLabel">☰ MENU</span><b>KATTAMARAM II</b><div class="languagePicker"><button id="languageButton" class="languageButton" type="button">PT-BR</button><div id="languageMenu" class="languageMenu"><button type="button" data-lang="pt-BR">🇧🇷 PT-BR</button><button type="button" data-lang="en">🇺🇸 ENGLISH</button><button type="button" data-lang="es">🇪🇸 ESPAÑOL</button></div></div></div><div class="heroText"><div>⚓</div><small id="heroSmall">KATTAMARAM II • FOZ DO IGUAÇU</small><h1 id="heroTitle">CARDÁPIO <i id="heroAboard">a bordo</i></h1><p id="heroDesc">Sabores especiais para tornar seu passeio ainda melhor.</p></div></header>
-<main><section><h2 id="categoriesTitle">NOSSAS CATEGORIAS</h2><div id="cats" class="cats"></div></section><section><h2 id="featuredTitle">DESTAQUES DO CARDÁPIO</h2><div id="featured" class="grid"></div></section><section id="productsSection"><h2 id="title">PRODUTOS</h2><div id="products" class="grid"></div></section></main><footer id="footerText">KATTAMARAM II • FOZ DO IGUAÇU • @KATTAMARAMFOZ</footer><div id="modal" class="modal" onclick="closeModal(event)"><button class="close" type="button" onclick="closeModal(event)">×</button><img id="mi"><h3 id="mn"></h3><p id="md"></p><strong id="mp"></strong><div id="modalOptions"></div></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#071a2b">
+    <title>Kattamaram II — Cardápio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+    <div class="top">
+        <span id="menuLabel">☰ MENU</span>
+        <b>KATTAMARAM II</b>
+        <div class="languagePicker">
+            <button id="languageButton" class="languageButton" type="button">PT-BR</button>
+            <div id="languageMenu" class="languageMenu">
+                <button type="button" data-lang="pt-BR">🇧🇷 PT-BR</button>
+                <button type="button" data-lang="en">🇺🇸 ENGLISH</button>
+                <button type="button" data-lang="es">🇪🇸 ESPAÑOL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ Área alterada: Foto do barco com texto em cima -->
+    <div class="heroText" style="position: relative; width: 100%; padding: 0;">
+        <img src="Imagen Cardapio.jpg" alt="Barco Kattamaram II" style="width: 100%; height: 380px; object-fit: cover; border-radius: 4px;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; width: 100%;">
+            <div>⚓</div>
+            <small id="heroSmall">KATTAMARAM II • FOZ DO IGUAÇU</small>
+            <h1 id="heroTitle">CARDÁPIO <i id="heroAboard">a bordo</i></h1>
+            <p id="heroDesc">Sabores especiais para tornar seu passeio ainda melhor.</p>
+        </div>
+    </div>
+    <!-- ✅ Fim da área alterada -->
+
+</header>
+<main>
+    <section>
+        <h2 id="categoriesTitle">NOSSAS CATEGORIAS</h2>
+        <div id="cats" class="cats"></div>
+    </section>
+    <section>
+        <h2 id="featuredTitle">DESTAQUES DO CARDÁPIO</h2>
+        <div id="featured" class="grid"></div>
+    </section>
+    <section id="productsSection">
+        <h2 id="title">PRODUTOS</h2>
+        <div id="products" class="grid"></div>
+    </section>
+</main>
+<footer id="footerText">KATTAMARAM II • FOZ DO IGUAÇU • @KATTAMARAMFOZ</footer>
+<div id="modal" class="modal" onclick="closeModal(event)">
+    <button class="close" type="button" onclick="closeModal(event)">×</button>
+    <img id="mi">
+    <h3 id="mn"></h3>
+    <p id="md"></p>
+    <strong id="mp"></strong>
+    <div id="modalOptions"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
