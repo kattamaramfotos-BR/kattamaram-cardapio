@@ -1,2 +1,2 @@
-window.SUPABASE_URL='https://kovftbxixmqylvwfyqzx.supabase.co';
-window.SUPABASE_ANON_KEY='sb_publishable_DUdjn8DmOTqGeopF_-fjog_tcQOv8XR';
+window.SUPABASE_URL='COLE_AQUI_A_PROJECT_URL';
+window.SUPABASE_ANON_KEY='COLE_AQUI_A_ANON_OU_PUBLISHABLE_KEY';
