@@ -115,3 +115,18 @@ function closeModal(e){if(!e||e.target.id==='modal'||e.target.classList.contains
 function showError(message){let el=$('#appError');if(!el){el=document.createElement('div');el.id='appError';el.className='appError';document.body.prepend(el);}el.textContent=message;}
 
 initLanguagePicker(); updateStaticTexts(); load().catch(err=>{console.error(err);showError(t('noProducts'));});
+
+
+// Menu lateral de redes e contato
+(() => {
+  const button = document.getElementById('menuLabel');
+  const overlay = document.getElementById('socialMenuOverlay');
+  const close = document.getElementById('socialMenuClose');
+  if (!button || !overlay || !close) return;
+  const openMenu = () => { overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); document.body.classList.add('socialMenuOpen'); };
+  const closeMenu = () => { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); document.body.classList.remove('socialMenuOpen'); };
+  button.addEventListener('click', openMenu);
+  close.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+})();
