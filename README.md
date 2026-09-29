@@ -1,36 +1,50 @@
-# Kattamaram II — Cardápio + Painel Administrativo
+# Kattamaram — Controle de Estoque
 
-## Versão multilíngue
-- Cardápio público com seletor de idioma no topo: PT-BR, ENGLISH e ESPAÑOL.
-- O idioma escolhido fica salvo no navegador e permanece selecionado quando o cliente volta ao cardápio.
-- Textos da interface, títulos, opções e mensagens são traduzidos automaticamente.
-- Produtos e categorias possuem campos de tradução no painel administrativo.
-- Opções/subprodutos também podem ter nome e descrição em inglês e espanhol.
-- Se uma tradução não estiver preenchida, o sistema usa o texto em PT-BR como fallback.
-- Preços continuam em reais (R$), independentemente do idioma.
+Sistema inicial para controlar mercadorias que chegam no Container e depois são transferidas para o Kattamaram II.
 
-## Importante — banco de dados
-Antes de publicar a nova versão, execute uma vez o conteúdo de `supabase-schema.sql` no Supabase > SQL Editor.
+## Fluxo
+Entrada manual ou nota fiscal → Container → Transferência → Kattamaram II.
 
-A atualização adiciona:
-- `products.translations` (jsonb)
-- `categories.translations` (jsonb)
-- mantém `products.options` (jsonb)
+## Requisitos
+- Node.js 18.14+ (recomendado LTS)
+- Conta/projeto no Supabase
+- GitHub para versionamento
+- Netlify para publicação
 
-Depois disso, no painel administrativo, edite os produtos/categorias e preencha as traduções.
+## Instalação local
 
-## Como o cliente troca o idioma
-No topo do cardápio, basta clicar em `PT-BR` e escolher:
-- 🇧🇷 PT-BR
-- 🇺🇸 ENGLISH
-- 🇪🇸 ESPAÑOL
+```bash
+npm install
+cp .env.example .env
+```
 
-A troca acontece na mesma página, sem precisar abrir outro cardápio.
+Preencha `.env`:
 
-## Supabase
-Confira `supabase-config.js` antes de publicar. O painel administrativo continua usando o usuário autorizado existente.
+```env
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_PUBLISHABLE_KEY=...
+```
 
+Depois:
 
-## Tradução automática ao cadastrar
+```bash
+npm run dev
+```
 
-A partir desta versão, ao salvar uma nova categoria ou produto, o painel traduz automaticamente os campos em português para **English** e **Español** e grava as traduções no Supabase. Isso inclui nome e descrição do produto, nome da categoria e nome/descrição de todas as opções/subprodutos. Se um produto existente tiver seu texto em PT-BR alterado, a tradução automática é atualizada quando a tradução anterior ainda era a tradução automática. Traduções preenchidas manualmente são preservadas.
+## Banco
+Abra o SQL Editor do Supabase e execute:
+
+`supabase/schema.sql`
+
+O SQL cria tabelas, índices, funções de transferência/entrada, triggers e políticas básicas.
+
+## Deploy no Netlify
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Cadastre no Netlify as mesmas variáveis `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY`.
+
+## Nota fiscal por IA
+A tela de nota fiscal está preparada para receber a imagem/PDF e armazenar o arquivo no Supabase Storage. A extração por IA deve ser feita posteriormente por uma função server-side/Edge Function, nunca colocando uma chave secreta de IA no frontend.
+
+## Observação de segurança
+Esta versão não possui login, conforme solicitado. As políticas do banco são configuradas para o cenário sem autenticação. Antes de colocar dados reais em produção, é recomendável adicionar autenticação/usuários e restringir as operações de escrita.
